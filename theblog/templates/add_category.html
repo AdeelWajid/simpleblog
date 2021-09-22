@@ -1,17 +1,16 @@
 {% extends 'base.html' %}
 
-{% block title %}Create A New Blog Post!{% endblock %}
+{% block title %}Create Category!{% endblock %}
 {% block content %}
 
     {% if  user.is_authenticated %}
-        <h1>Add Post...</h1>
+        <h1>Create Category...</h1>
         <br/>
 
         <form method="POST">
             {% csrf_token %}
-            {{ form.media }}
             {{ form.as_p }}
-            <button class="btn btn-secondary">Post</button>
+            <button class="btn btn-secondary">Create</button>
         </form>
     {% else %}
         <h3 class="text-center text-danger">You are not allowed to be here.</h3>

@@ -28,11 +28,29 @@
                         <a class="nav-link" href="{% url 'add-post' %}">Add Post</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">{{ user.username }}</a>
+                        <a class="nav-link" href="{% url 'add-category' %}">Add Category</a>
                     </li>
-                     <li class="nav-item">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Categories
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                             {% for cat in categories %}
+                                 <li><a class="dropdown-item" href="{% url 'category' cat.name|slugify %}">{{ cat.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'edit-profile' %}">{{ user.username }}</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                     </li>
+
                 {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'register' %}">Register</a>
