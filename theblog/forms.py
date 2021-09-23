@@ -11,7 +11,7 @@ from ckeditor.fields import RichTextFormField
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'title_tag', 'category', 'body' , 'snippet')
+        fields = ('title', 'title_tag', 'category', 'body', 'snippet', 'header_image')
 
         # Styling
         widgets = {
