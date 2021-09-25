@@ -1,10 +1,48 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Profile{% endblock %}
 {% block content %}
 
     <h1>User Profile</h1>
-    <br/>
-    {{ user_data }}
+    <br/><br/>
+
+<div class="card mb-3">
+    <div class="row no-gutters">
+        <div class="col-md-3">
+
+            {% if user_data.profile_pic %}
+            <img src="{{ user_data.profile_pic.url }}" class="card-img">
+            {% else %}
+            <img src="{% static 'theblog/image/default_profile_pic.jpg' %}" class="card-img m-auto">
+            {% endif %}
+
+        </div>
+        <div class="col-md-9">
+            <div class="card-body">
+                <h5 class="card-title">{{ user_data.first_name }} {{ user_data.last_name }}</h5>
+                {% if user_data.website_url %}
+                | <a href="{{ user_data.website_url }}">Website</a>
+                {% endif %}
+                {% if user_data.facebook_url %}
+                | <a href="{{ user_data.facebook_url }}">Facebook</a>
+                {% endif %}
+                {% if user_data.twitter_url %}
+                | <a href="{{ user_data.twitter_url }}">Twitter</a>
+                {% endif %}
+                {% if user_data.instagram_url %}
+                | <a href="{{ user_data.instagram_url }}">Instagram</a>
+                {% endif %}
+                {% if user_data.pinterest_url %}
+                | <a href="{{ user_data.pinterest }}">Pinterest</a>
+                {% endif %}
+
+                </p>
+                <p class="card-text">{{ user_data.bio }}</p>
+                {# <p class="card-text"><small class="text-muted">Last updated at: {{ post.post_date }}</small></p>#}
+            </div>
+        </div>
+    </div>
+</div>
+
 
 {% endblock %}
